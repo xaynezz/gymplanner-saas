@@ -1,0 +1,214 @@
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
+
+export interface Database {
+  public: {
+    Tables: {
+      profiles: {
+        Row: {
+          id: string;
+          email: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id: string;
+          email: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          email?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      workout_templates: {
+        Row: {
+          id: string;
+          name: string;
+          description: string | null;
+          difficulty: string | null;
+          category: string | null;
+          created_at: string;
+          created_by: string | null;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          description?: string | null;
+          difficulty?: string | null;
+          category?: string | null;
+          created_at?: string;
+          created_by?: string | null;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          description?: string | null;
+          difficulty?: string | null;
+          category?: string | null;
+          created_at?: string;
+          created_by?: string | null;
+        };
+      };
+      workout_days: {
+        Row: {
+          id: string;
+          template_id: string;
+          day_number: number;
+          name: string;
+          is_rest_day: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          template_id: string;
+          day_number: number;
+          name: string;
+          is_rest_day?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          template_id?: string;
+          day_number?: number;
+          name?: string;
+          is_rest_day?: boolean;
+          created_at?: string;
+        };
+      };
+      exercises: {
+        Row: {
+          id: string;
+          workout_day_id: string;
+          name: string;
+          sets: number;
+          reps: number;
+          rpe: number | null;
+          rest_seconds: number | null;
+          notes: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          workout_day_id: string;
+          name: string;
+          sets: number;
+          reps: number;
+          rpe?: number | null;
+          rest_seconds?: number | null;
+          notes?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          workout_day_id?: string;
+          name?: string;
+          sets?: number;
+          reps?: number;
+          rpe?: number | null;
+          rest_seconds?: number | null;
+          notes?: string | null;
+          created_at?: string;
+        };
+      };
+      user_workouts: {
+        Row: {
+          id: string;
+          user_id: string;
+          template_id: string;
+          start_date: string;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          template_id: string;
+          start_date: string;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          template_id?: string;
+          start_date?: string;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      completed_workouts: {
+        Row: {
+          id: string;
+          user_id: string;
+          workout_day_id: string;
+          date: string;
+          is_completed: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          workout_day_id: string;
+          date: string;
+          is_completed?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          workout_day_id?: string;
+          date?: string;
+          is_completed?: boolean;
+          created_at?: string;
+        };
+      };
+      exercise_progress: {
+        Row: {
+          id: string;
+          user_id: string;
+          exercise_name: string;
+          weight: number;
+          sets: number;
+          reps: number;
+          date: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          exercise_name: string;
+          weight: number;
+          sets: number;
+          reps: number;
+          date: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          exercise_name?: string;
+          weight?: number;
+          sets?: number;
+          reps?: number;
+          date?: string;
+          created_at?: string;
+        };
+      };
+    };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      [_ in never]: never;
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+  };
+}
